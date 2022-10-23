@@ -79,7 +79,7 @@ class TestGoodsServicesAsessments(unittest.TestCase):
         driver.find_element(By.XPATH,"/html/body/div[4]/div/form/table/tbody/tr[2]/td/button").click()
         time.sleep(2)
 
-
+        
 
 
     def tearDown(self):
