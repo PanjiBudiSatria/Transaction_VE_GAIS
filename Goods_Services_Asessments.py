@@ -39,10 +39,10 @@ class TestGoodsServicesAsessments(unittest.TestCase):
         time.sleep(1)
 
         driver.find_element(By.XPATH,"/html/body/div[4]/div/div/div/ul/li/a[1]/img").click()
-        time.sleep(1)
+        time.sleep(2)
 
-        driver.find_element(By.XPATH,"//[@title='Add Vendor Evaluation Goods / Services']").click()
-        time.sleep(1)
+        driver.find_element(By.XPATH,"//*[@id='subcontent-element']/div/div[1]/div[1]/a").click()
+        time.sleep(2)
 
         # select=Select(driver.find_element(By.ID,"search_po_number"))
         # select.select_by_visible_text()
@@ -50,14 +50,16 @@ class TestGoodsServicesAsessments(unittest.TestCase):
         nopo = driver.find_element(By.ID,"search_po_number")
         nopo.send_keys("PO01430087")
         time.sleep(1)
-        role.send_keys(Keys.ARROW_DOWN)
-        role.send_keys(Keys.ENTER)
-        time.sleep(1)
+        nopo.send_keys(Keys.ARROW_DOWN)
+        nopo.send_keys(Keys.ENTER)
+        time.sleep(2)
         select=Select(driver.find_element(By.ID,"assesment_type"))
         select.select_by_visible_text("Goods")
-        driver.find_element(By.XPATH,"//*[@id='list_po_details']/tr[2]/td[1]/input").click()
-        driver.find_element(By.XPATH,"/html/body/div[4]/div/form/div/div[1]/div/button").click()
         time.sleep(1)
+        driver.find_element(By.XPATH,"/html/body/div[4]/div/form/div/div[1]/table/tbody/tr[6]/td/table/tbody/tr[3]/td[1]/input").click()
+        time.sleep(1)
+        driver.find_element(By.XPATH,"//*[@id='tabs-emp']/ul/li[2]").click()
+        time.sleep(2)
 
         # select=Select(driver.find_element(By.XPATH,"/html/body/div[4]/div/form/div/div[2]/div[1]/table/tbody/tr[1]/td[4]/select"))
         # select.select_by_visible_text("")
@@ -71,15 +73,10 @@ class TestGoodsServicesAsessments(unittest.TestCase):
         select.select_by_visible_text("B")
         select=Select(driver.find_element(By.XPATH,"/html/body/div[4]/div/form/div/div[2]/div[1]/table/tbody/tr[6]/td[4]/select"))
         select.select_by_visible_text("B")
+        time.sleep(3)
 
         driver.find_element(By.XPATH,"/html/body/div[4]/div/form/div/div[2]/div[4]/button").click()
         time.sleep(3)
-
-        driver.find_element(By.XPATH,"/html/body/div[4]/div/form/table/tbody/tr[1]/td/input").send_keys("PO01430087")
-        driver.find_element(By.XPATH,"/html/body/div[4]/div/form/table/tbody/tr[2]/td/button").click()
-        time.sleep(2)
-
-        
 
 
     def tearDown(self):
