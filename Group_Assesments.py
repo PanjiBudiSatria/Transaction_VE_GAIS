@@ -1,0 +1,73 @@
+from lib2to3.pgen2 import driver
+from select import select
+import unittest
+import time
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.keys import Keys
+
+class Group_Assesments(unittest.TestCase):
+
+    def setUp(self):
+        self.driver = webdriver.Chrome(ChromeDriverManager().install())
+    
+    def test_a_group_assesments_add(self):
+        driver=self.driver
+        driver.maximize_window()
+        driver.get("http://10.9.98.65/gais65/")
+        time.sleep(3)
+        driver.find_element(By.XPATH,"/html/body/div[2]/div[6]/div/div/form/input[4]").send_keys("it.appsupport")
+        time.sleep(1)
+        driver.find_element(By.ID,"regularInput").send_keys("Gais432")
+        time.sleep(1)
+        driver.find_element(By.XPATH,"/html/body/div[2]/div[6]/div/div/form/div/button").click()
+        time.sleep(3)
+        driver.find_element(By.XPATH,"//input[@id='14']").click()
+        time.sleep(3)
+        driver.find_element(By.ID,"save").click()
+        time.sleep(5)
+
+        driver.find_element(By.XPATH,"//a[@data-id='427']").click()
+        time.sleep(2)
+
+        driver.find_element(By.XPATH,"//*[@id='icons']/ul/li/a[2]/img").click()
+        time.sleep(1)
+
+        driver.find_element(By.XPATH,"/html/body/div[4]/div/div/div/ul/li/a[2]/img").click()
+        time.sleep(1)
+
+        driver.find_element(By.XPATH,"//*[@id='icons']/ul/li/a[3]/img").click()
+        time.sleep(2)
+
+        driver.find_element(By.XPATH,"//*[@id='subcontent-element']/div/div[1]/div[1]/a").click()
+        time.sleep(2)
+
+        # select=Select(driver.find_element(By.ID,"search_po_number"))
+        # select.select_by_visible_text()
+
+        nopo = driver.find_element(By.ID,"search_supplier_name")
+        nopo.send_keys("sampoerna")
+        time.sleep(1)
+        nopo.send_keys(Keys.ARROW_DOWN)
+        nopo.send_keys(Keys.ENTER)
+        time.sleep(2)
+        asses_year = driver.find_element(By.XPATH,"//*[@id='form_input']/div[1]/table/tbody/tr[4]/td/select")
+        asses_year.click()
+        time.sleep(1)
+        asses_year.send_keys(Keys.ARROW_DOWN)
+        asses_year.send_keys(Keys.ENTER)
+        time.sleep(2)
+     
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(2)
+
+        driver.find_element(By.XPATH,"//*[@id='form_input']/div[2]/button[1]").click()
+        time.sleep(3)
+
+    def tearDown(self):
+        self.driver.close()
+
+if __name__ == "__main__":
+    unittest.main()
